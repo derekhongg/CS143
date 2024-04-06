@@ -13,7 +13,7 @@ public class ShoppingFrame extends JFrame {
     private ShoppingCart items;
     private JTextField total;
 
-    public ShoppingFrame(Catalog products)      {
+    public ShoppingFrame(Catalog products) {
         // create frame and order list
         setTitle(products.getName());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -38,7 +38,7 @@ public class ShoppingFrame extends JFrame {
         add(p, BorderLayout.CENTER);
 
         p = new JPanel();
-       add(makeCheckBoxPanel(), BorderLayout.SOUTH);
+        add(makeCheckBoxPanel(), BorderLayout.SOUTH);
 
         // adjust size to just fit
         pack();
@@ -85,7 +85,7 @@ public class ShoppingFrame extends JFrame {
     }
 
     // When the user types a new value into one of the quantity fields,
-    // parse the input and update the ShoppingCart.  Display an error
+    // parse the input and update the ShoppingCart. Display an error
     // message if text is not a number or is negative.
     private void updateItem(Item product, JTextField quantity) {
         int number;
