@@ -4,29 +4,23 @@ public class Catalog {
 
     private ArrayList<Item> items;
 
-    public Catalog(String name) {
-
+    public Catalog() {
+        this.items = new ArrayList<>();
     }
 
     public void add(Item next) {
+        items.add(next);
     }
 
     public int size() {
-        // This does NOT produce the correct behavior. It's only here to keep the
-        // compiler happy until you replace it with working code
-        return Integer.MIN_VALUE;
+        return items.size();
     }
 
     public Item get(int index) {
-        // This does NOT produce the correct behavior. It's only here to keep the
-        // compiler happy until you replace it with working code
-
-        return null;
+        return items.get(index);
     }
 
     public String getName() {
-        // This does NOT produce the correct behavior. It's only here to keep the
-        // compiler happy until you replace it with working code
-        return "";
+        return "Catalog";
     }
 }

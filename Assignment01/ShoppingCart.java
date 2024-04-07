@@ -8,21 +8,30 @@ public class ShoppingCart {
 
     public static final double DISCOUNT_PERCENT = 0.9;
 
-    public ShoppingCart() {
+    private ArrayList<ItemOrder> items;
+    private boolean discount;
 
+    public ShoppingCart() {
+        items = new ArrayList<>();
+        discount = false;
     }
 
     public void add(ItemOrder next) {
-
+        items.add(next);
     }
 
     public void setDiscount(boolean discount) {
-
+        this.discount = discount;
     }
 
     public double getTotal() {
-        // This does NOT produce the correct behavior. It's only here to keep the
-        // compiler happy until you replace it with working code
-        return Double.MIN_VALUE;
+        double total = 0;
+        for (ItemOrder itemOrder : items) {
+            total += itemOrder.getPrice();
+        }
+        if (discount) {
+            total *= DISCOUNT_PERCENT;
+        }
+        return total;
     }
 }
