@@ -30,9 +30,13 @@ public class TallyVotes2 {
   // order of preference with tabs separating choices.
   public static ArrayList<Ballot> readFile(Scanner input) {
     ArrayList<Ballot> result = new ArrayList<>();
+    int totalBallots = 0;
     while (input.hasNextLine()) {
       String text = input.nextLine();
-      result.add(new Ballot(text.split("\t")));
+      if(!text.isEmpty()){
+        result.add(new Ballot(text.split("\t")));
+        totalBallots++;
+      }
     }
     return result;
   }
