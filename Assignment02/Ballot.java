@@ -1,3 +1,8 @@
+/* 
+Derek Hong
+CS143
+*/
+
 import java.util.*;
 
 public class Ballot implements Comparable<Ballot> {
