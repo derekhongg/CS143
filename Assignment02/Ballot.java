@@ -15,6 +15,10 @@ public class Ballot implements Comparable<Ballot> {
     }
   }
 
+    //adding isEmpty() method
+    public boolean isEmpty() {
+      return preferences.isEmpty();
+    }
   // returns the current first choice for this ballot or "none" if there are
   // no longer any choices for this ballot
   public String getCandidate() {
@@ -33,11 +37,13 @@ public class Ballot implements Comparable<Ballot> {
   // compares this ballot to another, putting them in order
   // alphabetically by their first choice candidate
   public int compareTo(Ballot other) {
-    return getCandidate().compareTo(other.getCandidate());
-  }
-  
-  //adding isEmpty() method
-  public boolean isEmpty() {
-    return preferences.isEmpty();
+    String thisCandidate = getCandidate();
+    String otherCandidate = other.getCandidate();
+    if("none".equals(thisCandidate)) {
+      return 1;
+    } else if ("none".equals(otherCandidate)) {
+      return -1;
+    }
+    return thisCandidate.compareTo(otherCandidate);
   }
 }

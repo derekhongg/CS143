@@ -7,21 +7,27 @@ import java.util.*;
 import java.io.*;
 
 public class TallyVotes2 {
-  public static void main(String[] args)
-      throws FileNotFoundException {
-    System.out.println("What file contains the ballot information?");
+  public static void main(String[] args) throws FileNotFoundException {
     Scanner keyboard = new Scanner(System.in);
-    String fileName = keyboard.nextLine();
-    Scanner input = new Scanner(new File(fileName));
-    ArrayList<Ballot> ballots = readFile(input);
-    int round = 1;
-    boolean done = false;
-    while (!done) {
-      System.out.println("Round #" + round);
-      Collections.sort(ballots);
-      done = oneRound(ballots);
-      System.out.println("------------------------------");
-      round++;
+    String fileName;
+    while (true) {
+      System.out.println("What file contains the ballot information? (type 'quit' to exit)");
+      fileName = keyboard.nextLine();
+      if (fileName.equalsIgnoreCase("quit")) {
+        break;
+      }
+      Scanner input = new Scanner(new File(fileName));
+      ArrayList<Ballot> ballots = readFile(input);
+      int originalBallotsCount = ballots.size(); // Store the original number of ballots
+      int round = 1;
+      boolean done = false;
+      while (!done) {
+        System.out.println("Round #" + round);
+        Collections.sort(ballots);
+        done = oneRound(ballots, originalBallotsCount);
+        System.out.println("------------------------------");
+        round++;
+      }
     }
   }
 
@@ -30,12 +36,10 @@ public class TallyVotes2 {
   // order of preference with tabs separating choices.
   public static ArrayList<Ballot> readFile(Scanner input) {
     ArrayList<Ballot> result = new ArrayList<>();
-    int totalBallots = 0;
     while (input.hasNextLine()) {
-      String text = input.nextLine();
-      if(!text.isEmpty()){
-        result.add(new Ballot(text.split("\t")));
-        totalBallots++;
+      String text = input.nextLine().trim();
+      if (!text.isEmpty()) { // Ignore blank lines
+        result.add(new Ballot(text.split("\\s+"))); // Split on whitespace
       }
     }
     return result;
@@ -46,14 +50,18 @@ public class TallyVotes2 {
   // candidate gets a majority or until we reach a tie between
   // only two candidates. Assumes the list is in order by
   // candidate name.
-  public static boolean oneRound(ArrayList<Ballot> ballots) {
+  public static boolean oneRound(ArrayList<Ballot> ballots, int originalBallotsCount) {
     String top = null;
     String bottom = null;
     int topCount = 0;
-    int bottomCount = ballots.size() + 1;
+    int bottomCount = originalBallotsCount + 1;
     int index = 0;
     while (index < ballots.size()) {
       String next = ballots.get(index).getCandidate();
+      if ("none".equals(next)) {
+        index++;
+        continue; // Skip "none" entries
+      }
       int count = processVotes(next, index, ballots);
       if (count > topCount) {
         topCount = count;
@@ -68,7 +76,7 @@ public class TallyVotes2 {
     if (topCount == bottomCount) {
       System.out.println("Election has no winner");
       return true;
-    } else if (topCount > ballots.size() / 2.0) {
+    } else if (topCount > originalBallotsCount / 2) {
       System.out.println("Winner is " + top);
       return true;
     } else {
@@ -80,25 +88,26 @@ public class TallyVotes2 {
 
   // Counts and reports the votes for the next candidate
   // starting at the given index in the ballots list.
-  public static int processVotes(String name, int index,
-      ArrayList<Ballot> ballots) {
+  public static int processVotes(String name, int index, ArrayList<Ballot> ballots) {
     int count = 0;
-    while (index < ballots.size() &&
-        ballots.get(index).getCandidate().equals(name)) {
-      index++;
+    while (index < ballots.size() && name.equals(ballots.get(index).getCandidate())) {
       count++;
+      index++;
     }
     double percent = 100.0 * count / ballots.size();
-    System.out.printf("%d votes for %s (%4.1f%%)\n", count,
-        name, percent);
+    System.out.printf("%d votes for %s (%4.1f%%)\n", count, name, percent);
     return count;
   }
 
   // Eliminates the given candidate from all ballots.
-  public static void eliminate(String candidate,
-      ArrayList<Ballot> ballots) {
-    for (Ballot b : ballots) {
-      b.eliminate(candidate);
+  public static void eliminate(String candidate, ArrayList<Ballot> ballots) {
+    Iterator<Ballot> itr = ballots.iterator();
+    while (itr.hasNext()) {
+      Ballot ballot = itr.next();
+      ballot.eliminate(candidate);
+      if (ballot.isEmpty()) { // Check if the ballot is empty after elimination
+        itr.remove(); // Remove empty ballots
+      }
     }
   }
 }
