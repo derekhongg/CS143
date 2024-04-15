@@ -1,3 +1,8 @@
+/* 
+Derek Hong
+CS143
+*/
+
 import java.util.*;
 
 public class Ballot implements Comparable<Ballot> {
@@ -17,9 +22,8 @@ public class Ballot implements Comparable<Ballot> {
   public String getCandidate() {
     if (isEmpty()) {
       return "none";
-    } else {
-      return preferences.get(0);
     }
+    return preferences.get(0);
   }
 
   public void eliminate(String name) {
