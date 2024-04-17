@@ -3,9 +3,11 @@ import java.util.*;
 public class Catalog {
 
     private ArrayList<Item> items;
+    private String name;
 
-    public Catalog() {
+    public Catalog(String name) {
         this.items = new ArrayList<>();
+        this.name = name;
     }
 
     public void add(Item next) {
@@ -21,6 +23,6 @@ public class Catalog {
     }
 
     public String getName() {
-        return "Catalog";
+        return name;
     }
 }
