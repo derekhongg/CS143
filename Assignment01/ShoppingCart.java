@@ -1,8 +1,8 @@
-// Stuart Reges
-// 1/19/00
+// Derek Hong
+// CS143
 //
 
-import java.util.*;
+import java.util.ArrayList;
 
 public class ShoppingCart {
 
@@ -17,6 +17,12 @@ public class ShoppingCart {
     }
 
     public void add(ItemOrder next) {
+        for (ItemOrder order : items) {
+            if (order.getItem().equals(next.getItem())) {
+                items.remove(order);
+                break;
+            }
+        }
         items.add(next);
     }
 
