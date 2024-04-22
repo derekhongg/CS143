@@ -33,14 +33,50 @@ class Lecture07 {
         // EXERCISES:
 
         // Put your answer for #1 here:
-
+            // See below
         // Put your answer for #2 here:
-
+            // See below
         // Put your answer for #3 here:
 
         // Put your answer for #10 here:
 
         // Put your answer for #12 here:
 
+    }
+    public static void starString (int n) {
+        if(n < 0) {
+            throw new IllegalArgumentException("n must be greater than 0");
+        } else if(n == 0) {
+            System.out.print("*");
+        } else {
+            starString(n-1);
+            starString(n-1);
+        }
+    }
+
+    public static void writeNums(int n) {
+        if (n < 1) {
+            throw new IllegalArgumentException("Please enter a number 1 or greater");
+        } else if(n == 1) {
+            System.out.print("1");
+        } else {
+            writeNums(n - 1);
+            System.out.print("," + n);
+        }
+    }
+
+    public static void writeSequence(int n) {
+        if(n < 1) {
+            throw new IllegalArgumentException("Please enter a number greater than 1");
+        } else if (n == 1) {
+            System.out.print("1");
+        } else if (n == 2) {
+            System.out.print("1 1");
+        } else {
+            int firstNum = (n + 1) / 2;
+            System.out.print(firstNum + " ");
+            writeSequence(n - 2);
+            System.out.print(" " + firstNum);
+        }
     }
 }
