@@ -7,18 +7,34 @@ class Lecture08 {
         // 3. Should you use a sequential or binary search on an array of Point objects,
         // and why?
 
+            /*
+            - Use binary search for efficiency
+            */
+
         // 4. Under what circumstances can the Arrays.binarySearch and
         // Collections.binarySearch methods be used successfully?
-
+            /*
+            1. The array or collection are already sorted
+            2. Elements must be comparable
+            3. For collections the method expects a 'List' that supports random access by index
+            */
         // 5. In what order does the Collections.sort method arrange a list of strings?
         // How could you arrange them into a different order?
-
+            /*
+            The Collections.sort method sorts a list of strings ascending in lexographical order.
+            To sort things in a different order, you can pass a custom 'compartor' to 'Collections.sort'
+            */
         // Section 13.2: Program Complexity
         // 9. Approximate the runtime of the following code fragment listed in Canvas
-
+            /*
+            O(logN)
+            */
         // 10. Approximate the runtime of the following code fragment listed in Canvas
-
+            /*
+            O(N) - loop only runs one time
+            */
         // 11. Approximate the runtime of the following code fragment listed in Canvas
+            /* O(N^2) */
 
         // Section 13.3: Implementing Searching and Sorting Algorithms
         // 16. What is the runtime complexity class of a sequential search on an
