@@ -39,8 +39,9 @@ class Lecture07 {
         // Put your answer for #3 here:
             // See below
         // Put your answer for #10 here:
-
+            // See below
         // Put your answer for #12 here:
+            // See below
 
     }
     public static void starString (int n) {
@@ -78,5 +79,38 @@ class Lecture07 {
             writeSequence(n - 2);
             System.out.print(" " + firstNum);
         }
+    }
+    public static int digitMatch (int n1, int n2) {
+        if(n1 == 0 && n2 == 0) {
+            return 1;
+        }
+        if (n1 == 0 || n2 == 0) {
+            return 0;
+        }
+        int lastDigit1 = n1 % 10;
+        int lastDigit2 = n2 % 10;
+
+        if(lastDigit1 == lastDigit2) {
+            return 1 + digitMatch(n1/10, n2/10);
+        } else {
+            return digitMatch(n1/10, n2/10);
+        }
+    }
+    public static boolean isReverse(String str1, String str2) {
+        str1 = str1.toLowerCase();
+        str2 = str2.toLowerCase();
+
+        if(str1.length() <= 1 && str2.length() <= 1) {
+            return str1.equals(str2);
+        }
+
+        if(str1.length() != str2.length()) {
+            return false;
+        }
+
+        if(str1.charAt(0) != str2.charAt(str2.length()-1)) {
+            return false;
+        }
+        return isReverse(str1.substring(1), str2.substring(0, str2.length() - 1));
     }
 }
