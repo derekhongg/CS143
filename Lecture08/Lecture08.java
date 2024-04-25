@@ -123,27 +123,18 @@ class Lecture08 {
          */
         // B. {33, 14, 3, 95, 47, 9, –42, 13}
         /*
-         * - Pass 1:`-42` and swap with first element `33`: `{-42, 14, 3, 95, 47, 9, 33,
-         * 13}`
-         * - Pass 2: `3` and swap with element at index 1: `{-42, 3, 14, 95, 47, 9, 33,
-         * 13}`
-         * - Pass 3: `9` and swap with element at index 2: `{-42, 3, 9, 95, 47, 14, 33,
-         * 13}`
-         * - Pass 4: `13` and swap with element at index 3: `{-42, 3, 9, 13, 47, 14, 33,
-         * 95}`
-         * - Pass 5: `14` and swap with element at index 4: `{-42, 3, 9, 13, 14, 47, 33,
-         * 95}`
-         * - Pass 6: `33` and swap with element at index 5: `{-42, 3, 9, 13, 14, 33, 47,
-         * 95}`
+         * - Pass 1:`-42` and swap with first element `33`: `{-42, 14, 3, 95, 47, 9, 33, 13}`
+         * - Pass 2: `3` and swap with element at index 1: `{-42, 3, 14, 95, 47, 9, 33, 13}`
+         * - Pass 3: `9` and swap with element at index 2: `{-42, 3, 9, 95, 47, 14, 33, 13}`
+         * - Pass 4: `13` and swap with element at index 3: `{-42, 3, 9, 13, 47, 14, 33, 95}`
+         * - Pass 5: `14` and swap with element at index 4: `{-42, 3, 9, 13, 14, 47, 33, 95}`
+         * - Pass 6: `33` and swap with element at index 5: `{-42, 3, 9, 13, 14, 33, 47, 95}`
          */
         // C. {7, 1, 6, 12, –3, 8, 4, 21, 2, 30, –1, 9}
         /*
-         * - Pass 1: `-3` and swap with first element `7`: `{-3, 1, 6, 12, 7, 8, 4, 21,
-         * 2, 30, –1, 9}`
-         * - Pass 2: `-1` and swap with element at index 1: `{-3, -1, 6, 12, 7, 8, 4,
-         * 21, 2, 30, 1, 9}`
-         * - Pass 3: `1` and swap with element at index 2: `{-3, -1, 1,12, 7, 8, 4, 21,
-         * 2, 30, 6, 9}`
+         * - Pass 1: `-3` and swap with first element `7`: `{-3, 1, 6, 12, 7, 8, 4, 21, 2, 30, –1, 9}`
+         * - Pass 2: `-1` and swap with element at index 1: `{-3, -1, 6, 12, 7, 8, 4, 21, 2, 30, 1, 9}`
+         * - Pass 3: `1` and swap with element at index 2: `{-3, -1, 1,12, 7, 8, 4, 21, 2, 30, 6, 9}`
          */
         // D. {6, 7, 4, 8, 11, 1, 10, 3, 5, 9}
 
