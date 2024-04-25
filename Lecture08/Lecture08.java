@@ -113,18 +113,44 @@ class Lecture08 {
 
         // A. {29, 17, 3, 94, 46, 8, –4, 12}
         /*
-         * - Select and move `-4` to index 0: `-4, 17, 3, 94, 46, 8, 29, 12`
-         * - Select and move `3` to index 1: `-4, 3, 17, 94, 46, 8, 29, 12`
-         * - Select and move `8` to index 2: `-4, 3, 8, 94, 46, 17, 29, 12`
-         * - Select and move `12` to index 3: `-4, 3, 8, 12, 46, 17, 29, 94`
-         * - Select and move `17` to index 4: `-4, 3, 8, 12, 17, 46, 29, 94`
-         * - Select and move `29` to index 5: `-4, 3, 8, 12, 17, 29, 46, 94`
-         * - Select and move `46` to index 6: `-4, 3, 8, 12, 17, 29, 46, 94`
+         * - `-4` to index 0: `-4, 17, 3, 94, 46, 8, 29, 12`
+         * - `3` to index 1: `-4, 3, 17, 94, 46, 8, 29, 12`
+         * - `8` to index 2: `-4, 3, 8, 94, 46, 17, 29, 12`
+         * - `12` to index 3: `-4, 3, 8, 12, 46, 17, 29, 94`
+         * - `17` to index 4: `-4, 3, 8, 12, 17, 46, 29, 94`
+         * - `29` to index 5: `-4, 3, 8, 12, 17, 29, 46, 94`
+         * - `46` to index 6: `-4, 3, 8, 12, 17, 29, 46, 94`
          */
         // B. {33, 14, 3, 95, 47, 9, –42, 13}
+        /*
+         * - Pass 1:`-42` and swap with first element `33`: `{-42, 14, 3, 95, 47, 9, 33,
+         * 13}`
+         * - Pass 2: `3` and swap with element at index 1: `{-42, 3, 14, 95, 47, 9, 33,
+         * 13}`
+         * - Pass 3: `9` and swap with element at index 2: `{-42, 3, 9, 95, 47, 14, 33,
+         * 13}`
+         * - Pass 4: `13` and swap with element at index 3: `{-42, 3, 9, 13, 47, 14, 33,
+         * 95}`
+         * - Pass 5: `14` and swap with element at index 4: `{-42, 3, 9, 13, 14, 47, 33,
+         * 95}`
+         * - Pass 6: `33` and swap with element at index 5: `{-42, 3, 9, 13, 14, 33, 47,
+         * 95}`
+         */
         // C. {7, 1, 6, 12, –3, 8, 4, 21, 2, 30, –1, 9}
+        /*
+         * - Pass 1: `-3` and swap with first element `7`: `{-3, 1, 6, 12, 7, 8, 4, 21,
+         * 2, 30, –1, 9}`
+         * - Pass 2: `-1` and swap with element at index 1: `{-3, -1, 6, 12, 7, 8, 4,
+         * 21, 2, 30, 1, 9}`
+         * - Pass 3: `1` and swap with element at index 2: `{-3, -1, 1,12, 7, 8, 4, 21,
+         * 2, 30, 6, 9}`
+         */
         // D. {6, 7, 4, 8, 11, 1, 10, 3, 5, 9}
 
-        /*  */
+        /*
+         * - Pass 1:  `1` and swap with first element `6`: `{1, 7, 4, 8, 11, 6, 10, 3, 5, 9}`
+         * - Pass 2:  `3` and swap with element at index 1: `{1, 3, 4, 8, 11, 6, 10, 7, 5, 9}`
+         * - Pass 3:  `4` and swap with element at index 2: `{1, 3, 4, 8, 11, 6, 10, 7, 5, 9}`
+         */
     }
 }
