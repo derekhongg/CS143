@@ -24,7 +24,7 @@ class Lecture02 {
         list.add("It");
         list.add("was");
         list.add("a");
-        list.add("stomy");
+        list.add("stormy");
         list.add("night");
 
         System.out.println("The size of the list is: " + list.size());
