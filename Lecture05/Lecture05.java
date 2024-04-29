@@ -120,10 +120,11 @@ class Lecture05 {
     }
 
     public static int maxLength(Set<String> strings) {
+        HashSet<String> string = new HashSet<>();
         int max = 0;
         for(String s : strings) {
-            if(s.length() > max) {
-                max = s.length();
+            if(max < s.length()) {
+                max= s.length();
             }
         }
         return max;

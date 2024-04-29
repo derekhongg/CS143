@@ -28,9 +28,9 @@ class Lecture03 {
         // C: negative
         // n2.compareTo(n1)
         // D: negative
-        // s1.compareTo(s2);
+        System.out.println(s1.compareTo(s2));
         // E: positive
-        // s3.compareTo(s1);
+        System.out.println(s3.compareTo(s1));
         // F: 0
         // s2.compareTo(s2);
 

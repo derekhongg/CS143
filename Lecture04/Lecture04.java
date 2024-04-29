@@ -9,7 +9,7 @@ class Lecture04 {
 
         // 1. When should you use a LinkedList instead of an ArrayList?
             /*
-            1. When there are frequent insertions or deletions of elements
+            1. When there are frequent insertions or deletions of elements or changes
             2. When the primary operation is iterating over elements
             3. When there is limited memory available
             4. Maintaining the order of elements is important
@@ -220,7 +220,7 @@ class Lecture04 {
             List<Integer> list2 = List.of(6, 7, 8, 9, 10, 11, 12);
     
             List<Integer> result = alternate(list1, list2);
-            System.out.println(result);
+            System.out.println("Results for AlternateLists: " + result);
         }
     }
     public class SetOperations {
