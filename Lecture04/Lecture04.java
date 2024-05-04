@@ -44,7 +44,7 @@ class Lecture04 {
         // one duplicate of element value 1, three duplicates of element value 5, and
         // one duplicate of element value 7.
 
-        /*
+        
         public class LinkedListDuplicates {
 
             public static int countDuplicates(LinkedList<Integer> list) {
@@ -77,14 +77,13 @@ class Lecture04 {
                 System.out.println("Number of duplicates: " + duplicates);
             }
         }
-        */
 
         // 5. Write a piece of code that inserts a String into an ordered linked list of
         // Strings, maintaining sorted order.
         // For example, for the list ["Alpha", "Baker", "Foxtrot", "Tango", "Whiskey"],
         // inserting "Charlie" in order would produce the list ["Alpha", "Baker",
         // "Charlie", "Foxtrot", "Tango", "Whiskey"].
-            /*
+        
                 public class OrderedLinkedList {
 
                     public static void insertInOrder(LinkedList<String> list, String element) {
@@ -107,7 +106,6 @@ class Lecture04 {
                         System.out.println(list);
                     }
                 }
-            */
         // From Section 11.2: Sets
         // 10. A List has every method that a Set has, and more. So why would you use a
         // Set rather than a List?
