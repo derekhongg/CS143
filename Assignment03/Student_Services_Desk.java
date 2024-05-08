@@ -52,57 +52,115 @@ public class Student_Services_Desk {
                     // https://stackoverflow.com/a/11465208/250610
                     //
                     System.out.print("What is the ID number of the student to find? ");
-                    System.out.printf("%s, %s (SID=%d)\nClasses:\n", "PLACEHOLDER", "PLACEHOLDER", 0);
-                    System.out.println("\t" + "PLACEHOLDER");
-                    System.out.println("Didn't find a student with ID # " + "PLACEHOLDER");
+                    int iD = Integer.parseInt(keyboard.nextLine());
+                    if (studentInfo.containsKey(iD)) {
+                        System.out.println(studentInfo.get(iD));
+                    } else {
+                        System.out.println("Didn't find a student with ID #" + iD);
+                    }
                     break;
 
                 case 'l':
                     System.out.println("The following students are registered:");
+                    for (Student student : studentInfo.values()) {
+                        System.out.println(student);
+                    }
                     break;
                 case 'a':
                     System.out.println("Adding a new student\n");
                     System.out.println("Please provide the following information:");
                     System.out.print("Student's first name? ");
+                    String firstName = keyboard.nextLine();
                     System.out.print("Student's last name? ");
+                    String lastName = keyboard.nextLine();
 
-                    System.out
-                            .println("Type the name of class, or leave empty to stop.  Press enter/return regardless");
+                    List<String> newClasses = new ArrayList<>();
+                    String className;
+
+                    do {
+                        System.out.println(
+                                "Type the name of class, or leave empty to stop.  Press enter/return regardless");
+                        className = keyboard.nextLine();
+                        if (!className.isEmpty()) {
+                            newClasses.add(className);
+                        }
+                    } while (!className.isEmpty());
+
+                    int newStudentID = nextSID++;
+
+                    studentInfo.put(newStudentID, new Student(newStudentID, firstName, lastName, newClasses));
                     break;
                 case 'd':
                     System.out.println("Deleting an existing student\n");
                     System.out.print("What is the ID number of the student to delete? ");
-                    System.out.println("Student account found and removed from the system!");
-                    System.out.println("Didn't find a student with ID # " + "PLACEHOLDER");
+                    int idToDelete = Integer.parseInt(keyboard.nextLine());
+                    if (studentInfo.containsKey(idToDelete)) {
+                        studentInfo.remove(idToDelete);
+                        System.out.println("Student account found and removed from the system!");
+                    } else {
+                        System.out.println("Didn't find a student with ID # " + idToDelete);
+                    }
                     break;
                 case 'm':
                     System.out.println("Modifying an existing student\n");
                     System.out.print("What is the ID number of the student to modify? ");
-                    System.out.println(
-                            "Student account found!\nFor each of the following type in the new info or leave empty to keep the existing info.  Press enter/return in both cases.");
-                    System.out.print("Student's first name: " + "PLACEHOLDER" + " New first name? ");
-                    System.out.print("Student's last name: " + "PLACEHOLDER" + " New last name? ");
-                    System.out.println("Updating class list");
-                    System.out.println("Here are the current classes: " + "PLACEHOLDER");
-                    System.out.println("This program will go through all the current classes.");
-                    System.out.println(
-                            "For each class it will print the name of the class and then ask you if you'd like to delete or keep it.");
+                    int idToModify = Integer.parseInt(keyboard.nextLine());
+                    if (studentInfo.containsKey(idToModify)) {
+                        Student studentToModify = studentInfo.get(idToModify);
+                        System.out.println("Student account found!");
+                        System.out.println(
+                                "For each of the following type in the new info or leave empty to keep the existing info.  Press enter/return in both cases.");
+                        System.out
+                                .print("Student's first name: " + studentToModify.getFirstName() + " New first name? ");
+                        String newFirstName = keyboard.nextLine();
+                        if (!newFirstName.isEmpty()) {
+                            studentToModify.setFirstName(newFirstName);
+                        }
+                        System.out.print("Student's last name: " + studentToModify.getLastName() + " New last name? ");
+                        String newLastName = keyboard.nextLine();
+                        if (!newLastName.isEmpty()) {
+                            studentToModify.setLastName(newLastName);
+                        }
 
-                    System.out.println(
-                            "PLACEHOLDER" + "\nType d<enter/return> to remove, or just <enter/return> to keep ");
-                    System.out.println("Removing " + "PLACEHOLDER" + "\n");
-                    System.out.println("Keeping " + "PLACEHOLDER" + "\n");
-                    System.out.println(
-                            "Type the name of the class you'd like to add, or leave empty to stop.  Press enter/return regardless");
+                        System.out.println("Updating class list");
+                        List<String> currentClasses = studentToModify.getClasses();
+                        System.out.println("Here are the current classes: " + currentClasses);
+                        System.out.println("This program will go through all the current classes.");
+                        System.out.println(
+                                "For each class it will print the name of the class and then ask you if you'd like to delete or keep it.");
 
-                    System.out.println("Here's the student's new, updated info: " + "PLACEHOLDER");
+                        Iterator<String> iterator = currentClasses.iterator();
+                        while (iterator.hasNext()) {
+                            String currentClass = iterator.next();
+                            System.out.print(currentClass
+                                    + "\nType d<enter/return> to remove, or just <enter/return> to keep: ");
+                            String option = keyboard.nextLine();
+                            if (option.equals("d")) {
+                                iterator.remove();
+                            }
+                        }
+
+                        String newClassName;
+                        do {
+                            System.out.print(
+                                    "Type the name of the class you'd like to add, or leave empty to stop. Press enter/return regardless: ");
+                            newClassName = keyboard.nextLine();
+                            if (!newClassName.isEmpty()) {
+                                currentClasses.add(newClassName);
+                            }
+                        } while (!newClassName.isEmpty());
+
+                        System.out.println("Here's the student's new, updated info: " + studentToModify);
+                        } else {
+                        System.out.println("Didn't find a student with ID # " + idToModify);
+                    }
                     break;
-                case 'q':
-                    System.out.println("Thanks for using the program - goodbye!\n");
-                    break;
-                default:
-                    System.out.println("Sorry, but I didn't recognize the option " + choice);
-                    break;
+                    case 'q':
+                        System.out.println("Thanks for using the program - goodbye!\n");
+                        break;
+                    default:
+                        System.out.println("Sorry, but I didn't recognize the option " + choice);
+                        break;
             }
 
         }
