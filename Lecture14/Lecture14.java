@@ -51,35 +51,88 @@ class Lecture14 {
         // For example, if a variable called list stores [11, –7, 3, 42, 0, 14], the
         // call of list.sum() should return 63. If the list is empty, sum should return
         // 0.
+        
+        /*
+        See below
+        */
 
         // 20. Write a method called average that returns the average of the values in
         // the list as a real number.
         // For example, if a variable called list stores [11, –7, 3, 42, 0, 14], the
         // call of list.average() should return 10.5. If the list is empty, average
         // should return 0.0.
+        
+        /*
+        See below
+        */
 
         // Section 15.4: ArrayList<E>
         // 21. What problem do we encounter when we try to construct an array of type E?
         // How do we resolve this problem?
-
+        /*
+        When trying to construct an array of a generic type 'E', we encounter a problem due to Java's type erasure,
+        which removes the generic type information at runtime. This issue is typically resolved by creating an array 'Object'
+        and casting it to the desired generic type '(E[])', or more safely, by using reflection with 'Array.newINstance(class, size)' where 'clazz'
+        is the 'Class<E>' representing the generic type.
+        */
         // 22. Since our list stores an unfilled array, the empty elements were filled
         // with the value 0 when our array was full of integers.
         // What value occupies the empty cells when our list stores values of type E?
+        
+        /*
+        When a list stores values of type E, the empty cells are filled with 'null' if E is a reference type, as Java initializes
+        object array elements to 'null' by default.
+        */
 
         // 23. What changes need to be made to the indexOf method to search for objects
         // of type E in the new list class, and why are these changes necessary?
-
+        /*
+        To search for objects of type E in the new list class, the 'indexOf' method must use the ".equals()" method instead of "=="
+        to ensure it correctly checks for logical equality rather than reference equality.
+        */
         // 24. What is an annotation? How are annotations useful in writing our
         // ArrayList<E> class?
+
+        /*
+        An annotation is a form of metadata that provides data about a program but is not part of the program itself, and annotations are useful in writing our 
+        `ArrayList<E>` class to provide compile-time checks,
+        enhance readability, and add information for debugging or optimization purposes, such as `@Override`, `@SuppressWarnings`, or `@NonNull`.
+        */
 
         // 25. Why is it important to set empty elements to null when we are clearing or
         // removing from the list of type E, when we didn’t need to clear out these
         // elements in the previous ArrayIntList?
-
+        
+        /*
+        Setting empty elements to null when clearing or removing items from a list of type E is important to prevent memory leaks by ensuring that unused objects are eligible for garbage collection,
+        which was unnecessary in ArrayIntList where elements were primitive types not subject to garbage collection.
+        */
+        
         // 26. What is one benefit of making the list iterator into an inner class?
-
+        /*
+        Making the list iterator an inner class allows it direct access to the list's private members and methods, facilitating easier and more efficient manipulation of the list's elements.
+        */
         // Exercises:
         // None
 
+    }
+    public int sum() {
+        int sum = 0;
+        for(int value : this) {
+            sum += value;
+        }
+        return sum;
+    }
+
+    public double average() {
+        if (this.size == 0) {
+            return 0.0;
+        }
+        
+        int sum = 0;
+        for(int value : this) {
+            sum += value;
+        }
+        return (double) sum / this.size();
     }
 }
