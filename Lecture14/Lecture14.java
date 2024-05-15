@@ -7,20 +7,46 @@ class Lecture14 {
         // 14. When this new version of the class fills to its capacity, it resizes.
         // How much does it grow? Why choose this growth rate, rather than increasing
         // the capacity by a single element or other constant amount?
-
+        
+        /*
+        When the class reaches its capacity, it typically resizes by doubling its size to balance
+        computational efficiency and memory usuage, avoiding frequent reallocations and excesive memory overhead.
+        */
+        
         // 15. What is the benefit of adding an iterator to the list class?
-
+        
+        /*
+        Adding an iterator to the list class provides a standardized way to access and traerse the elements in the list,
+        enhancing usability and compatibility with other parts of a program or library.
+        */
+        
         // 16. What state does the array list iterator store?
+
+        /*
+        The array list iterator typically stores the current index position and a reference to the array list
+        to manage traversal and check for concurrent modifications.
+        */
 
         // 17. How does the array list iterator know if there are more elements left to
         // examine?
         // What does it do if the client tries to examine a next element but there are
         // none left to examine?
 
+        /*
+        The array list iterator checks if there are more elements by comparing the current index
+        with the size of the list, and it throws a 'NoSuchElementException' if the client tries to access
+        a next element when none are left.
+        */
+
         // 18. What is a precondition of the iterator’s remove method?
         // How does the iterator enforce this precondition, and what does it do if the
         // precondition is violated?
-
+        
+        /*
+        The precondition of the iterator's remove method is that the next method must have been called at least once before remove is invoked,
+        the iterator enforces this by using a state flag, and throws an "IllegalStateException" if the precondtition is violated
+        */
+        
         // 19. Write a method called sum that returns the sum of all values in the list.
         // For example, if a variable called list stores [11, –7, 3, 42, 0, 14], the
         // call of list.sum() should return 63. If the list is empty, sum should return
