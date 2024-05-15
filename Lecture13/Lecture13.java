@@ -1,3 +1,5 @@
+//Derek Hong
+
 class Lecture13 {
     public static void main(String[] args) {
         System.out.println("Hello from lecture 13");
@@ -108,7 +110,7 @@ class Lecture13 {
         We add the contains and isEmpty methods to the list class to provide more intuitive and expressive APIs for clients, 
         despite similar functionality being achievable through the indexOf and size methods, respectively.
         */
-        
+
         // Exercises:
         // None
     }
