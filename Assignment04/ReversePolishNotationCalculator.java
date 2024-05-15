@@ -124,7 +124,7 @@ public class ReversePolishNotationCalculator {
                 evalAgain = 'n';
             }
         }
-        System.out.println("Thank you.Program ends");
+        System.out.println("Thank you for using the RPN Calculator!");
     }
 
 }
