@@ -86,21 +86,35 @@ class Lecture15 {
 
         // Section 16.2: A Linked List Class
         // 18. What are the two ways to change the contents of a linked list?
-
+        /*
+        The contents of a linked list can be changed by either inserting or removing nodes at specified positions within the list.
+        */
         // 19. An element can be inserted at or removed from the beginning, middle, or
         // end of a linked list.
         // Which of the three locations is the most computationally expensive, and why?
         // How does this compare against the result for an array list?
-
+        
+        /*
+        Inserting or removing an element at the end of a linked list is the most computationally expensive if the list is singly linked and lacks a tail pointer,
+        due to needing to traverse the entire list to reach the end; in contrast,
+        these operations are more computationally expensive at the beginning of an array list because all subsequent elements need to be shifted.
+        
+        */
         // 20. When you add or remove the element found at index i of a list, you must
         // create a temporary current node reference and advance it through the list.
         // At which index’s node should the loop stop, relative to i?
-
+        
+        /*
+        When adding or removing the element at index i, the loop should stop at the node just before index i (i.e., at index i-1) to properly link or unlink the nodes.
+        */
+        
         // 21. In an array list, it is possible to overrun the capacity of the array, at
         // which point the list must be resized to fit.
         // Is resizing necessary on a linked list? What limits the number of elements
         // that a linked list can have?
-
+        /*
+        Resizing is not necessary on a linked list as it does not have a predefined capacity; the number of elements it can contain is limited primarily by the system's available memory.
+        */
         // QUESTIONS 21-24:
         // Please put these into a separate file(s), as described in this file above
 
