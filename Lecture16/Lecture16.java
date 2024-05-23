@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Lecture16 {
     public static void main(String[] args) {
         System.out.println("Hello from lecture 16");
@@ -35,23 +37,41 @@ class Lecture16 {
 
         // 29. What are some advantages of creating an IntList interface and having both
         // types of lists implement it?
-
+        
+        /*
+        Creating an IntList interface allows for consistent method definitions and usage across different list implementations, promoting reusability and flexibility in programming.
+        */
+        
         // 30. Write a method called firstLast that can accept either type of integer
         // list as a parameter and that moves the first element of the list to the end.
         // For example, if a variable called list contains the values [12, 45, 78, 20,
         // 36], the call of firstLast(list); will change the list to store [45, 78, 20,
         // 36, 12].
-
+        /*
+        See below
+         */
         // Section 16.5: LinkedList<E>
 
         // 31. What are some changes that need to be made to the linked list class to
         // convert it from storing integers to storing objects of type E?
+        
+        /*
+        To convert a linked list class from storing integers to storing objects of type E,
+        the node class within the linked list should have its data type changed from `int` to `E`,
+        and the linked list class should be defined with a generic type parameter `<E>`.
+        */
 
         // 32. Why is an iterator especially useful with linked lists?
+        /*
+        An iterator is especially useful with linked lists because it provides a simple and efficient way to traverse through the nodes without exposing the underlying structure or requiring direct access to the list's internal nodes.
+        */
 
         // 33. What state does the linked list iterator store? How does the iterator
         // know if there are more elements left to examine?
-
+        /*
+        The linked list iterator typically stores the current node it is referencing,
+        and it knows there are more elements left to examine if the current node's `next` pointer is not null.
+        */
         // Exercises:
 
         // 18. Write a method called doubleList that doubles the size of a list by
@@ -66,7 +86,9 @@ class Lecture16 {
         // construct exactly N nodes to be added. You may not use any auxiliary data
         // structures such as arrays or ArrayLists to solve this problem. Your method
         // should run in O(N) time where N is the number of nodes in the list.
-
+        /*
+        See below
+        */
         // 19. Write a method called rotate that moves the value at the front of a list
         // of integers to the end of the list.
 
@@ -78,7 +100,10 @@ class Lecture16 {
         // any new nodes to solve this problem nor change any of the data values stored
         // in the nodes. You must solve the problem by rearranging the links of the
         // list.
-
+        /*
+        See Below
+        */
+        
         // 21.  Write a method called surroundWith that takes an integer x and an
         // integer y as parameters and surrounds all nodes in the list containing the
         // value x with new nodes containing the value y.
@@ -136,5 +161,90 @@ class Lecture16 {
             current = current.next;
         }
         return sum / (double) count;
+    }
+
+    public void firstLast (IntList list) {
+        if(list.size() > 1) {
+            int first = list.get(0);
+            list.remove(0);
+            list.add(first);
+        }
+    }
+
+    public void doubleList() {
+        if(head == null) {
+            return null;
+        }
+
+        Node current = head;
+        int count = 0;
+
+        while(current.next != null) {
+            current = current.next;
+            count++;
+        }
+
+        Node last = current;
+        current = head;
+        
+        for (int i = 0; i < count; i++) {
+            last.next = new Node(current.data);
+            last = last.next;
+            current = current.next;
+        }
+    }
+
+    public void rotate () {
+        if(head == null || head.next == null) {
+            return;
+        }
+
+        Node second = head.next;
+        Node last = head;
+        while(last.next != null) {
+            last = last.next;
+        }
+        last.next = head;
+        head.next = null;
+        head = second;
+    }
+
+    public void surroundWith (int x, int y) {
+        Node current = head;
+        Node prev = null;
+    
+        while (current != null) {
+            if (current.data == x) {
+                Node before = new Node(y);
+                Node after = new Node(y);
+
+                if (prev != null) {
+                    prev.next = before;
+                } else {
+                    head = before;
+                }
+                before.next = current;
+                after.next = current.next;
+                current.next = after;
+                prev = after;
+                current = after.next;
+            } else {
+                prev = current;
+                current = current.next;
+            }
+        }
+    }
+    public void reverse() {
+        Node previous = null;
+        Node current = head;
+        Node nextNode = null;
+    
+        while (current != null) {
+            nextNode = current.next;
+            current.next = previous;
+            previous = current;
+            current = nextNode;
+        }
+        head = previous;
     }
 }
