@@ -153,6 +153,11 @@ class Lecture17 {
         // How does it differ from the one we showed in Section 17.4? Is it better or
         // worse, and why?
 
+        /* 
+            This version of contains is less efficient than the chapter's version. It searches both left and right recursively, 
+            ignoring the tree's sortedness, resulting in a linear O(N) runtime instead of the desired O(log N).
+        */
+
         // private boolean contains(IntTreeNode root, int value) {
         //     if (root == null) {
         //         return false;
